@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Signal Bread Interactive</title>
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Signal Bread Interactive</h1>
+      <p class="tagline">A Roblox game studio making fun and cozy multiplayer experiences.</p>
+      <nav class="links">
+        <a class="btn" href="https://www.roblox.com/groups/123456/Signal-Bread-Interactive" target="_blank" rel="noopener">Roblox Group</a>
+        <a class="btn" href="https://discord.gg/REPLACE_INVITE" target="_blank" rel="noopener">Discord Server</a>
+        <a class="btn primary" href="/join-discord.html">Join Discord</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main">
+    <section class="about">
+      <h2>About</h2>
+      <p>Signal Bread Interactive is an indie Roblox studio focused on community-forward multiplayer games. This site is the project landing page — replace the placeholder links below with your studio's real Roblox group ID and Discord invite.</p>
+    </section>
+
+    <section class="games">
+      <h2>Games</h2>
+      <p>Coming soon — add a list of your games here with screenshots and links to Roblox places.</p>
+    </section>
+
+    <section class="contact">
+      <h2>Contact & Links</h2>
+      <ul>
+        <li>Roblox group: <a href="https://www.roblox.com/groups/123456/Signal-Bread-Interactive" target="_blank" rel="noopener">https://www.roblox.com/groups/123456/Signal-Bread-Interactive</a> (replace 123456)</li>
+        <li>Discord server: <a href="https://discord.gg/REPLACE_INVITE" target="_blank" rel="noopener">https://discord.gg/REPLACE_INVITE</a> (replace with your invite)</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>Built from the supercooltaxfraud repo — edit files to customize. Hosted on GitHub Pages.</small>
+    </div>
+  </footer>
+
+  <script>
+    // simple enhancement: if discord invite still placeholder, warn in console
+    (function(){
+      const el = document.querySelector('.links a[href*="REPLACE_INVITE"]');
+      if(el) console.warn('Reminder: replace the Discord invite placeholder in index.html with your real invite code.');
+    })();
+  </script>
+</body>
+</html>
