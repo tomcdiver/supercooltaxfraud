@@ -1,0 +1,42 @@
+/* Proudly Sponsored By footer logos */
+.sponsor-section {
+  margin: 0 0 24px;
+  padding: 0 0 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sponsor-section h2 {
+  margin: 0 0 18px;
+  color: var(--text);
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sponsor-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.sponsor-logos img {
+  width: min(220px, 42%);
+  height: 90px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #fff;
+  padding: 8px;
+}
+
+@media (max-width: 560px) {
+  .sponsor-logos {
+    gap: 14px;
+  }
+
+  .sponsor-logos img {
+    width: min(180px, 45%);
+    height: 74px;
+  }
+}
