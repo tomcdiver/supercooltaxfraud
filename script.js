@@ -1,5 +1,6 @@
-// Mark the link for the page currently being viewed.
+// Shared page behavior: current navigation state and accessible theme toggle.
 (() => {
+  const root = document.documentElement;
   const currentPath = window.location.pathname.replace(/\/$/, "") || "/";
   const currentPage = currentPath.split("/").pop() || "index.html";
   const pageName = currentPage.includes(".") ? currentPage : `${currentPage}.html`;
@@ -14,4 +15,37 @@
       link.removeAttribute("aria-current");
     }
   });
+
+  let savedTheme = null;
+  try {
+    savedTheme = window.localStorage.getItem("rr-theme");
+  } catch (_error) {
+    // Storage can be unavailable in private browsing; the button still works for this page.
+  }
+
+  const applyTheme = (theme) => {
+    const isDark = theme === "dark";
+    root.dataset.theme = isDark ? "dark" : "light";
+    toggle.setAttribute("aria-pressed", String(isDark));
+    toggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+    toggle.innerHTML = `<span class="theme-icon" aria-hidden="true">${isDark ? "☀" : "☾"}</span><span>${isDark ? "Light mode" : "Dark mode"}</span>`;
+    try {
+      window.localStorage.setItem("rr-theme", isDark ? "dark" : "light");
+    } catch (_error) {
+      // Ignore unavailable storage.
+    }
+  };
+
+  const toggle = document.createElement("button");
+  toggle.className = "theme-toggle";
+  toggle.type = "button";
+  toggle.setAttribute("aria-pressed", "false");
+  toggle.addEventListener("click", () => {
+    applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
+  });
+
+  const nav = document.querySelector(".main-nav");
+  if (nav) nav.append(toggle);
+
+  applyTheme(savedTheme === "dark" ? "dark" : "light");
 })();
