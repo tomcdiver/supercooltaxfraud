@@ -1,6 +1,19 @@
 // Shared page behavior: current navigation state and accessible theme toggle.
 (() => {
   const root = document.documentElement;
+
+  // Use the dedicated favicon image on every page that loads this shared script.
+  const favicon = document.querySelector('link[rel="icon"]');
+  if (favicon) {
+    favicon.href = "favicon.png";
+  } else {
+    const iconLink = document.createElement("link");
+    iconLink.rel = "icon";
+    iconLink.type = "image/png";
+    iconLink.href = "favicon.png";
+    document.head.append(iconLink);
+  }
+
   const currentPath = window.location.pathname.replace(/\/$/, "") || "/";
   const currentPage = currentPath.split("/").pop() || "index.html";
   const pageName = currentPage.includes(".") ? currentPage : `${currentPage}.html`;
