@@ -1,4 +1,4 @@
-// Shared page behavior: current navigation state and accessible theme toggle.
+// Shared page behavior: current navigation state, accessible theme toggle, and sticky header.
 (() => {
   const root = document.documentElement;
 
@@ -59,6 +59,21 @@
 
   const nav = document.querySelector(".main-nav");
   if (nav) nav.append(toggle);
+
+  const header = document.querySelector(".site-header");
+  if (header) {
+    let updateQueued = false;
+    const updateStickyState = () => {
+      if (updateQueued) return;
+      updateQueued = true;
+      window.requestAnimationFrame(() => {
+        header.classList.toggle("is-scrolled", window.scrollY > 24);
+        updateQueued = false;
+      });
+    };
+    window.addEventListener("scroll", updateStickyState, { passive: true });
+    updateStickyState();
+  }
 
   applyTheme(savedTheme === "dark" ? "dark" : "light");
 })();
